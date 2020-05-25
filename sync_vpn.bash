@@ -22,7 +22,7 @@ mkdir -p $DST/boot
 mount -L BOOT $DST/boot
 
 # STEP 2
-rsync -ahPHAXx --delete    --exclude={/dev/*,/proc/*,/sys/*,/tmp/*,/run/*,/var/tmp/*,/mnt/*,/media/*,/var/log/boot-repair,/var/log/**.gz,/var/log/**.1,/var/log/android/*,/home/vpn_android/data/*,/lost+found} -e "ssh -p 1111" root@$SRCIP:/ $DST/
+rsync -ahPHAX --delete    --exclude={/dev/*,/proc/*,/sys/*,/tmp/*,/run/*,/var/tmp/*,/mnt/*,/media/*,/var/log/boot-repair,/var/log/**.gz,/var/log/**.1,/var/log/android/*,/home/vpn_android/data/*,/lost+found} -e "ssh -p 1111" root@$SRCIP:/ $DST/
 
 # repair missing folder
 rsync -av -f"+ */" -f"- *" --exclude={/dev/*,/proc/*,/sys/*,/tmp/*,/run/*,/var/tmp/*,/mnt/*,/media/*,/var/log/boot-repair,/lost+found} -e "ssh -p 1111" root@$SRCIP:/ $DST/
