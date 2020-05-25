@@ -54,8 +54,8 @@ find /mnt/dst/var/log/ -type f -exec truncate -s 0 {} \;
 find /mnt/dst/var/www/vpn/log/ -type f -exec truncate -s 0 {} \;
 
 # STEP 3
-MACADDR_ETH0=$(cat /sys/class/net/eth0/address)
-MACADDR_VGN0=$(cat /sys/class/net/eth1/address)
+MACADDR_ETH0=$(cat /sys/class/net/ens18/address)
+MACADDR_VGN0=$(cat /sys/class/net/ens19/address)
 
 cat <<EOT > $DST/etc/udev/rules.d/10-network.rules
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="$MACADDR_ETH0",KERNEL=="*", NAME="eth0"
