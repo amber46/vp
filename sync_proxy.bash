@@ -44,7 +44,7 @@ mkdir -p $DST/var/riproxy
 mount -L RIPROXY $DST/var/riproxy
 
 # STEP 2
-rsync -ahPHAXx --delete    --exclude={/dev/*,/proc/*,/sys/*,/tmp/*,/run/*,/var/tmp/*,/mnt/*,/media/*,/var/log/boot-repair,/var/log/**.gz,/var/log/**.1,/var/riproxy/users_memory_data/*,/lost+found} -e "ssh -p 1111" root@$SRCIP:/ $DST/
+rsync -ahPHAX --delete    --exclude={/dev/*,/proc/*,/sys/*,/tmp/*,/run/*,/var/tmp/*,/mnt/*,/media/*,/var/log/boot-repair,/var/log/**.gz,/var/log/**.1,/var/riproxy/users_memory_data/*,/lost+found} -e "ssh -p 1111" root@$SRCIP:/ $DST/
 
 # repair missing folder
 rsync -av -f"+ */" -f"- *" --exclude={/dev/*,/proc/*,/sys/*,/tmp/*,/run/*,/var/tmp/*,/mnt/*,/media/*,/lost+found} -e "ssh -p 1111" root@$SRCIP:/ $DST/
